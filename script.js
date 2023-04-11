@@ -1,4 +1,4 @@
-// An object with 2 nested objects: tips (arrays with motivational tips) and blocks (phrases for completing the tips). The script works only if tips and blocks contain the same number of arrays.
+// an object with nested arrays in key values. With the help of mixedMessage function you can combine texts inside the nested arrays of each key. 
 const tipsObj = {
     arr1: [['Don\'t', 'You should never', 'Try not to', 'Never'], ['lose control over your emotions', 'get lost in negative thoughts', 'please laziness', 'let bad habits ruin your life']],
     arr2: [['Reminder:', 'Keep in mind:', 'Important:'], ['Believe in yourself and all that you are', 'Success is not final, failure is not fatal: it is the courage to continue that counts', 'The future belongs to those who believe in the beauty of their dreams', 'You are never too old to set another goal or to dream a new dream', 'Do not wait for opportunities, create them', 'You miss 100% of the shots you don\'t take', 'Don\'t be afraid to fail. Be afraid not to try']],
@@ -6,8 +6,9 @@ const tipsObj = {
 }
 
 let mixedMessage = obj => {
-    // arrays where we will push our random tips and random blocks
+    // an empty array where we will push our random tips
     let tipsList = [];
+    // generate random tips
     for (let key in obj) {
         let tip = [];
         for (let i = 0; i < obj[key].length; i++) {
@@ -16,7 +17,11 @@ let mixedMessage = obj => {
         }
         tipsList.push(tip.join(' '));
     }
+
+    // log introductory string
     console.log('Motivational tips of the day:')
+
+    // log tips in random sequence
     const temp = tipsList.length
     for (let i = 0; i < temp; i++) {
         let tip = tipsList.splice(Math.floor(Math.random() * tipsList.length), 1);
